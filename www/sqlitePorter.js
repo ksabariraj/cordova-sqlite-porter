@@ -74,6 +74,7 @@
                 var totalCount, currentCount;
 
                 var statements = removeComments(sql).split(separator);
+                statements.pop();
                     //.match(statementRegEx);
 
                 if(statements === null || (Array.isArray && !Array.isArray(statements)))
