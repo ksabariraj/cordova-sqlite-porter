@@ -34,7 +34,7 @@
     var DEFAULT_BATCH_INSERT_SIZE = 250;
 
     // Statement separator
-    var separator = ";\n";
+    var separator = ";\n\n;";
 
     // Matches statements based on semicolons outside of quotes
     var statementRegEx = /(?!\s|;|$)(?:[^;"']*(?:"(?:\\.|[^\\"])*"|'(?:\\.|[^\\'])*')?)*/g;
@@ -73,8 +73,8 @@
                 //Clean SQL + split into statements
                 var totalCount, currentCount;
 
-                var statements = removeComments(sql)
-                    .match(statementRegEx);;
+                var statements = removeComments(sql).split(separator);
+                    //.match(statementRegEx);
 
                 if(statements === null || (Array.isArray && !Array.isArray(statements)))
                     statements = [];
